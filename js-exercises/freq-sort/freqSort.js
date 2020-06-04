@@ -1,12 +1,13 @@
 function freqSort(arrayOfCharacters) {
   if (!Array.isArray(arrayOfCharacters)) {
-    console.log("not array");
     throw new Error("argument should be array");
   } else {
     let frequencyMap = {};
+
     arrayOfCharacters.map(checkFreqElement);
 
     function checkFreqElement(element) {
+      element = element.normalize("NFC");
       if (frequencyMap.hasOwnProperty(element))
         return (frequencyMap[element] += 1);
       else return (frequencyMap[element] = 1);

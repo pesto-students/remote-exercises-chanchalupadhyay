@@ -11,6 +11,9 @@ describe("frequenct sort ", () => {
       freqSort(["b", "z", "z", "z", "b", "b", "z", "c", "h", "h"])
     ).toEqual(["z", "b", "h", "c"]);
   });
+  expect(
+    freqSort(["A", "A", "m", "m", "m", "é", "l", "l", "l", "A", "m", "é"])
+  ).toEqual(["m", "A", "l", "é"]);
 
   test("should provide correct argument", () => {
     expect(() => freqSort({ b: "ch" })).toThrowError(
