@@ -44,7 +44,7 @@ test('delayed sleep', async () => {
 
     expect(end - start).toBeGreaterThanOrEqual(19);
     expect(end - start).toBeLessThan(30);
-  });
+  }); 
 });
 
 test('delayed promise chain sleeping', async () => {
