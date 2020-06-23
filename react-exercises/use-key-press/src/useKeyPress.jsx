@@ -4,25 +4,26 @@ import { useState, useEffect } from "react";
 function useKeyPress(targetKey) {
   const [keyPressed, setKeyPressed] = useState(false);
 
-  const keyDownHandler = ({ pressedKey }) => {
-    console.log(targetKey, pressedKey);
-    if (pressedKey === targetKey) {
+  const keyDownHandler = ({ key }) => {
+    console.log("before=" + targetKey, key, keyPressed);
+    if (key === targetKey) {
       setKeyPressed(true);
+      console.log("after=" + targetKey, key, keyPressed);
     }
   };
-  const keyUpHandler = ({ pressedKey }) => {
-    if (pressedKey === targetKey) {
-      setKeyPressed(false);
-    }
-  };
+  // const keyUpHandler = (props) => {
+  //   if (props.key === targetKey) {
+  //     setKeyPressed(false);
+  //   }
+  // };
 
   useEffect(() => {
     window.addEventListener("keydown", keyDownHandler);
-    window.addEventListener("keyup", keyUpHandler);
+    // window.addEventListener("keyup", keyUpHandler);
 
     return () => {
       window.removeEventListener("keydown", keyDownHandler);
-      window.removeEventListener("keyup", keyUpHandler);
+      // window.removeEventListener("keyup", keyUpHandler);
     };
   }, []);
   return keyPressed;

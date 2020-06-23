@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import UseKeyPress from "./component/UseKeyPress";
+// import UseKeyPress from "./component/UseKeyPress";
 
 ReactDOM.render(
   <React.StrictMode>
