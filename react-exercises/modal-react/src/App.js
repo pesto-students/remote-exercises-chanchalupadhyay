@@ -4,10 +4,13 @@ import LoginModal from "./component/LoginModal";
 import SignUpModal from "./component/SignUpModal";
 
 class App extends React.Component {
-  state = {
-    statusOfSignUpModal: false,
-    statusOfLoginModal: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      statusOfSignUpModal: false,
+      statusOfLoginModal: false,
+    };
+  }
 
   openSignUpModal = () => {
     console.log("signUp");
@@ -18,14 +21,28 @@ class App extends React.Component {
 
     this.setState({ statusOfLoginModal: true });
   };
+
+  /**
+   * This method will help us closing the Modal.
+   */
+  handleCloseLoginModal = () => {
+    this.setState({ statusOfLoginModal: false });
+  }
+
   render() {
     return (
       <div>
         <button onClick={this.openSignUpModal}>SignUp</button>
         <button onClick={this.openLoginModal}>Login</button>
-
-        <LoginModal status={this.state.statusOfLoginModal}></LoginModal>
-        <SignUpModal status={this.state.statusOfSignUpModal}></SignUpModal>
+        {this.state.statusOfLoginModal ? (
+          <LoginModal
+            status={this.state.statusOfLoginModal}
+            onClose={this.handleCloseLoginModal}
+          />
+        ) : (
+          ""
+        )}
+        <SignUpModal status={this.state.statusOfSignUpModal} />
       </div>
     );
   }
