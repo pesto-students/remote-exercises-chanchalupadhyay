@@ -9,23 +9,31 @@ class App extends React.Component {
     statusOfLoginModal: false,
   };
 
-  openSignUpModal = () => {
-    console.log("signUp");
+  handleOpenSignUpModal = () => {
     this.setState({ statusOfSignUpModal: true });
   };
-  openLoginModal = () => {
-    console.log("Login");
-
+  handleOpenLoginModal = () => {
     this.setState({ statusOfLoginModal: true });
+  };
+  handleCloseLoginModal = () => {
+    this.setState({ statusOfLoginModal: false });
+  };
+  handleCloseSignUpModel = () => {
+    this.setState({ statusOfSignUpModal: false });
   };
   render() {
     return (
       <div>
-        <button onClick={this.openSignUpModal}>SignUp</button>
-        <button onClick={this.openLoginModal}>Login</button>
-
-        <LoginModal status={this.state.statusOfLoginModal}></LoginModal>
-        <SignUpModal status={this.state.statusOfSignUpModal}></SignUpModal>
+        <LoginModal
+          status={this.state.statusOfLoginModal}
+          onClose={this.handleCloseLoginModal}
+        ></LoginModal>
+        <SignUpModal
+          status={this.state.statusOfSignUpModal}
+          onClose={this.handleCloseSignUpModel}
+        ></SignUpModal>
+        <button onClick={this.handleOpenSignUpModal}>SignUp</button>
+        <button onClick={this.handleOpenLoginModal}>Login</button>
       </div>
     );
   }

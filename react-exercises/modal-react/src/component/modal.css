@@ -7,7 +7,9 @@
   background-color: rgb(250, 248, 246);
 }
 .main-modal {
-  /* border: 1px solid black; */
+  border: 1px solid black;
+  padding: 1em;
+
   position: fixed;
   background-color: burlywood;
   width: 80%;
