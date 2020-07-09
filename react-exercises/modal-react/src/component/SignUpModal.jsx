@@ -57,6 +57,7 @@ class SignUpModal extends React.Component {
               placeholder="Enter First Name"
               onChange={this.handleInputChange}
               value={this.state.firstName}
+              required
               //   ref={(input) => (this.firstName = input)}
             />
             <br />
@@ -67,6 +68,7 @@ class SignUpModal extends React.Component {
               placeholder="Enter Last Name"
               onChange={this.handleInputChange}
               value={this.state.lastName}
+              required
 
               //   ref={(input) => (this.lastName = input)}
             />
@@ -78,6 +80,7 @@ class SignUpModal extends React.Component {
               placeholder="Enter password"
               onChange={this.handleInputChange}
               value={this.state.password}
+              required
             />
             <br />
             <label>Confirm Password</label>
@@ -122,6 +125,8 @@ class SignUpModal extends React.Component {
               placeholder="Enter Email Id"
               onChange={this.handleInputChange}
               value={this.state.emailId}
+              required
+
               //   ref={(input) => (this.emailId = input)}
             />
             <br />
