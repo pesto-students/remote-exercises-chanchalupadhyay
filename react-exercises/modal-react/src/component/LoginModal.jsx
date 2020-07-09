@@ -9,9 +9,6 @@ export default class LoginModal extends Component {
       username: "",
       password: "",
     };
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
 
   /**
@@ -19,7 +16,7 @@ export default class LoginModal extends Component {
    * State of HTML(User Input.)
    * @param event {Event} Event A javascript Event Object
    */
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     const newState = this.state;
     newState[event.target.name] = event.target.value;
     this.setState(newState);
@@ -30,7 +27,7 @@ export default class LoginModal extends Component {
    * form on submission and will handle form submission.
    * @param event {Event} Event A javascript Event Object
    */
-  handleFormSubmit(event) {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state;
     if (username === "sonutj" && password === "password") {
@@ -48,7 +45,7 @@ export default class LoginModal extends Component {
    * Close modal will handle the hiding o the modal when clicked on close button.
    * @param event {Event} Event A javascript Event Object
    */
-  closeModal(event) {
+  closeModal = (event) => {
     this.state.onClose();
   }
 
