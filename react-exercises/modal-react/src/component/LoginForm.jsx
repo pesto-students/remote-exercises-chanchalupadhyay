@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import "./modal.css";
+import Modal from "./Modal";
 
-export default class LoginModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ...props,
-      username: "",
-      password: "",
-    };
-  }
+export default class LoginForm extends Component {
+  state = {
+    username: "",
+    password: "",
+  };
 
   /**
    * The method will bind the react component state with input
@@ -44,39 +41,35 @@ export default class LoginModal extends Component {
    * @param event {Event} Event A javascript Event Object
    */
   closeModal = (event) => {
-    this.state.onClose();
+    this.props.onClose();
   };
 
   render() {
-    const showHideModal = this.state.status
-      ? "modal-container display-block"
-      : "modal-container display-none";
     return (
-      <div className={showHideModal}>
-        <div className="main-modal">
-          <button onClick={this.closeModal}>close</button>
-        </div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label htmlFor="username">Username:*</label>
-          <input
-            onChange={this.handleInputChange}
-            type="text"
-            value={this.state.username}
-            name="username"
-            id="username"
-          />
-          <br />
-          <label htmlFor="password">Password:*</label>
-          <input
-            onChange={this.handleInputChange}
-            type="password"
-            name="password"
-            id="password"
-            value={this.state.password}
-          />
-          <br />
-          <input type="submit" value="Log In" />
-        </form>
+      <div>
+        <Modal isOpen={this.props.isOpen} handleClose={this.closeModal}>
+          <form onSubmit={this.handleFormSubmit}>
+            <label htmlFor="username">Username:*</label>
+            <input
+              onChange={this.handleInputChange}
+              type="text"
+              value={this.state.username}
+              name="username"
+              id="username"
+            />
+            <br />
+            <label htmlFor="password">Password:*</label>
+            <input
+              onChange={this.handleInputChange}
+              type="password"
+              name="password"
+              id="password"
+              value={this.state.password}
+            />
+            <br />
+            <input type="submit" value="Log In" />
+          </form>
+        </Modal>
       </div>
     );
   }

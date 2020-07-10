@@ -1,7 +1,8 @@
 import React from "react";
 import "./modal.css";
+import Modal from "./Modal";
 
-class SignUpModal extends React.Component {
+class SignUpForm extends React.Component {
   state = {
     firstName: "",
     lastName: "",
@@ -19,7 +20,7 @@ class SignUpModal extends React.Component {
         ? event.target.checked
         : event.target.value;
     this.setState({ [event.target.name]: value });
-    if (event.target.type == "checked" && event.target.checked) {
+    if (event.target.type === "checked" && event.target.checked) {
       this.setState({ permanentAddress: this.state.localAddress });
     } else {
       this.setState({
@@ -41,14 +42,12 @@ class SignUpModal extends React.Component {
   };
 
   render() {
-    const showHideModal = this.props.status
+    const showHideModal = this.props.isOpen
       ? "modal-container display-block"
       : "modal-container display-none";
     return (
-      <div className={showHideModal}>
-        <div className="main-modal">
-          <button onClick={(e) => this.closeModal(e)}>close</button>
-
+      <div>
+        <Modal isOpen={this.props.isOpen} handleClose={this.closeModal}>
           <form onSubmit={this.handleFormSubmit}>
             <label>First Name</label>
             <input
@@ -174,9 +173,9 @@ class SignUpModal extends React.Component {
             <br />
             <input type="submit" value="SignUp" />
           </form>
-        </div>
+        </Modal>
       </div>
     );
   }
 }
-export default SignUpModal;
+export default SignUpForm;

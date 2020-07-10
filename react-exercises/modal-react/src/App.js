@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import LoginModal from "./component/LoginModal";
-import SignUpModal from "./component/SignUpModal";
+import LoginForm from "./component/LoginForm";
+import SignUpForm from "./component/SignUpForm";
 
 class App extends React.Component {
   state = {
@@ -24,14 +24,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <LoginModal
-          status={this.state.statusOfLoginModal}
+        <LoginForm
+          isOpen={this.state.statusOfLoginModal}
           onClose={this.handleCloseLoginModal}
-        ></LoginModal>
-        <SignUpModal
-          status={this.state.statusOfSignUpModal}
+        ></LoginForm>
+        <SignUpForm
+          isOpen={this.state.statusOfSignUpModal}
           onClose={this.handleCloseSignUpModel}
-        ></SignUpModal>
+        ></SignUpForm>
         <button onClick={this.handleOpenSignUpModal}>SignUp</button>
         <button onClick={this.handleOpenLoginModal}>Login</button>
       </div>
