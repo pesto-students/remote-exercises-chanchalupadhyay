@@ -26,7 +26,9 @@ export default class LoginForm extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state;
-    if (username === "sonutj" && password === "password") {
+    const emailId=localStorage.getItem("emailId");
+    const getPassword=localStorage.getItem("password");
+    if (username === emailId && password === getPassword) {
       alert("Login Successfull");
     } else {
       alert("Invalid username or password");
@@ -41,13 +43,23 @@ export default class LoginForm extends Component {
    * @param event {Event} Event A javascript Event Object
    */
   closeModal = (event) => {
-    this.props.onClose();
+    this.setState({
+    firstName:"",
+    lastName:"",
+    password: "",
+    confirmPassword: "",
+    emailId: "",
+    mobileNumber: "",
+    localAddress: "",
+    permanentAddress: "",
+    })
+      this.props.onClose();
   };
 
   render() {
     return (
       <div>
-        <Modal isOpen={this.props.isOpen} handleClose={this.closeModal}>
+        <Modal isOpen={this.props.isOpen} closeModal={this.props.onClose} tittle="Login">
           <form onSubmit={this.handleFormSubmit}>
             <label htmlFor="username">Username:*</label>
             <input
@@ -67,7 +79,7 @@ export default class LoginForm extends Component {
               value={this.state.password}
             />
             <br />
-            <input type="submit" value="Log In" />
+            <input type="submit" className="btn-continue" value="Log In" />
           </form>
         </Modal>
       </div>

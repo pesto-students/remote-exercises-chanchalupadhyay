@@ -2,6 +2,7 @@ import React from "react";
 import "./modal.css";
 import Modal from "./Modal";
 
+
 class SignUpForm extends React.Component {
   state = {
     firstName: "",
@@ -36,18 +37,28 @@ class SignUpForm extends React.Component {
     localStorage.setItem("emailId", this.state.emailId);
     localStorage.setItem("mobileNumber", this.state.mobileNumber);
     localStorage.setItem("password", this.state.password);
+    this.props.onClose();
+    alert("SignUp successfully")
   };
   closeModal = (event) => {
-    this.props.onClose();
+    this.setState({
+    firstName:"",
+    lastName:"",
+    password: "",
+    confirmPassword: "",
+    emailId: "",
+    mobileNumber: "",
+    localAddress: "",
+    permanentAddress: "",
+    })
+      this.props.onClose();
   };
 
   render() {
-    const showHideModal = this.props.isOpen
-      ? "modal-container display-block"
-      : "modal-container display-none";
+    
     return (
       <div>
-        <Modal isOpen={this.props.isOpen} handleClose={this.closeModal}>
+        <Modal isOpen={this.props.isOpen} closeModal={()=>this.closeModal()} tittle="SignUp">
           <form onSubmit={this.handleFormSubmit}>
             <label>First Name</label>
             <input
@@ -74,7 +85,7 @@ class SignUpForm extends React.Component {
             <br />
             <label>Password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="Enter password"
               onChange={this.handleInputChange}
@@ -84,7 +95,7 @@ class SignUpForm extends React.Component {
             <br />
             <label>Confirm Password</label>
             <input
-              type="text"
+              type="password"
               name="confirmPassword"
               placeholder="Enter confirm password"
               onChange={this.handleInputChange}
@@ -171,7 +182,7 @@ class SignUpForm extends React.Component {
               disabled={this.state.checkboxState == true ? true : false}
             />
             <br />
-            <input type="submit" value="SignUp" />
+            <input type="submit"  className="btn-continue"value="SignUp" />
           </form>
         </Modal>
       </div>
