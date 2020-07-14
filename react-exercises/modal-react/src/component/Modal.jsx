@@ -6,13 +6,9 @@ function Modal({ isOpen, children ,closeModal,tittle}) {
     ? "modal-container display-block"
     : "modal-container display-none";
 
+  !isOpen ? null :
 
   return (
-    <div className="modal-container" style={{
-      transform: isOpen ? 'translateY(0vh)' : 'translateY(-100vh)',
-      opacity: isOpen ? '1' : '0'
-  }}>
-
      <div className="modal-header">
        <h3>{tittle}</h3>
      <span className="close-modal-btn" onClick={closeModal}>×</span>
