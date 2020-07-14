@@ -17,7 +17,7 @@ class SignUpForm extends React.Component {
 
   handleInputChange = (event) => {
     let value =
-      event.target.type == "checkbox"
+      event.target.type === "checkbox"
         ? event.target.checked
         : event.target.value;
     this.setState({ [event.target.name]: value });
@@ -175,11 +175,11 @@ class SignUpForm extends React.Component {
               name="permanentAddress"
               onChange={this.handleInputChange}
               value={
-                this.state.checkboxState == true
+                this.state.checkboxState
                   ? this.state.localAddress
                   : this.state.permanentAddress
               }
-              disabled={this.state.checkboxState == true ? true : false}
+              disabled={this.state.checkboxState ? true : false}
             />
             <br />
             <input type="submit"  className="btn-continue"value="SignUp" />

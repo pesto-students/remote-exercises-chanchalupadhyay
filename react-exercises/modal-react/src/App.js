@@ -24,8 +24,8 @@ class App extends React.Component {
   render() {
     return (
       <div >
-         { this.state.statusOfSignUpModal ? <div onClick={this. handleCloseSignUpModal} className="back-drop"></div> : null }
-         { this.state. statusOfLoginModal ? <div onClick={this. handleCloseLoginModal} className="back-drop"></div> : null }
+         {this.state.statusOfSignUpModal ? <div onClick={this.handleCloseSignUpModal} className="back-drop"></div> : null }
+         {this.state.statusOfLoginModal ? <div onClick={this.handleCloseLoginModal} className="back-drop"></div> : null }
          <button  className="open-modal-btn" onClick={this.handleOpenSignUpModal}>SignUp</button>
         <button className="open-modal-btn"onClick={this.handleOpenLoginModal}>Login</button>
         
